@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace QuaseOrm.Utils
 {
@@ -10,7 +7,6 @@ namespace QuaseOrm.Utils
     {
         public Parameters()
         {
-
         }
 
         public Parameters(Criteria Criteria)
@@ -23,6 +19,7 @@ namespace QuaseOrm.Utils
             IList<Criteria> c = Criterias;
             this.Criterias = c;
         }
+
         /// <summary>
         /// Adiciona um critério tipo chave/valor a ser utilizado em updates, deletes e finds
         /// </summary>
@@ -42,11 +39,11 @@ namespace QuaseOrm.Utils
         /// Data para de início da consulta
         /// </summary>
         public Criteria DataInicial { get; set; }
+
         /// <summary>
         /// Data fim da consulta
         /// </summary>
         public Criteria DataFinal { get; set; }
-
 
         /// <summary>
         /// Adiciona uma propriedade a ser utilizado consultas
@@ -119,7 +116,7 @@ namespace QuaseOrm.Utils
                 {
                     c = Criterias;
                 }
-                
+
                 c.Add(new Criteria(chave, valor));
                 Criterias = c;
             }
@@ -130,7 +127,7 @@ namespace QuaseOrm.Utils
         }
 
         /// <summary>
-        /// Adicionar nova data para select simples ou entre duas datas 
+        /// Adicionar nova data para select simples ou entre duas datas
         /// </summary>
         public void AddDataInicial(string chave, object valor)
         {
@@ -157,7 +154,6 @@ namespace QuaseOrm.Utils
             {
                 throw new Exception(ex.Message);
             }
-        }        
-
+        }
     }
 }

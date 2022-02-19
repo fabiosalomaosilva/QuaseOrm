@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace QuaseOrm.Utils
 {
@@ -10,4 +8,3 @@ namespace QuaseOrm.Utils
         public IList<string> ListEntities { get; set; }
     }
 }
-

@@ -8,6 +8,7 @@ namespace QuaseOrm.DataAnnotations
         {
             this.Property = property;
         }
+
         public string Property { get; set; }
     }
 }

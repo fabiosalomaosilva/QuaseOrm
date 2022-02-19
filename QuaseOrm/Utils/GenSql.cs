@@ -4,7 +4,6 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
 
 namespace QuaseOrm.Utils
@@ -26,7 +25,7 @@ namespace QuaseOrm.Utils
                 // tentar forçar a conversão
                 try
                 {
-                    if (t.Name.Contains("Guid"))   
+                    if (t.Name.Contains("Guid"))
                     {
                         param.DbType = (DbType)tc.ConvertFrom("Guid");
                     }
@@ -143,7 +142,7 @@ namespace QuaseOrm.Utils
                     }
                 }
             }
-    
+
             s.Append(" ) ");
             s.Append(" VALUES (");
             for (int i = 0; i < tam; i++)
@@ -286,7 +285,6 @@ namespace QuaseOrm.Utils
             int tamIncludes = campos.Joins.Count;
             int indexIncludes = 0;
 
-
             StringBuilder s = new StringBuilder();
             s.Append(" SELECT  ");
             var chave = Helper.RecuperarChavePrimaria<T>();
@@ -312,7 +310,6 @@ namespace QuaseOrm.Utils
                 {
                     s.Append(String.Format(" {0}.{1} as {0}_{1}, ", tipo.Name, i.Name));
                 }
-
             }
 
             foreach (var i in campos.Joins)
@@ -385,9 +382,7 @@ namespace QuaseOrm.Utils
                             }
                         }
                     }
-
                 }
-
             }
 
             s.Append(" FROM ");
@@ -407,8 +402,6 @@ namespace QuaseOrm.Utils
                 Type tipo1 = Helper.RecuperarClassePorNome<T>(i);
                 s.Append(Helper.RecuperarChaveEstrangeira(tipo1).Name);
             }
-
-
 
             if (campos.Criterios != null)
             {
@@ -447,7 +440,6 @@ namespace QuaseOrm.Utils
         }
         **/
 
-
         internal static string SelectAllSqlStringPorID<T>(Parameters campos)
         {
             Type tipo = typeof(T);
@@ -467,7 +459,6 @@ namespace QuaseOrm.Utils
                     s.Append(", ");
                 }
                 s.Append(campos.Propriedades[campos.Propriedades.Count - 1].ToString());
-
             }
             else
             {
@@ -501,7 +492,6 @@ namespace QuaseOrm.Utils
                     s.Append(", ");
                 }
                 s.Append(campos.Propriedades[campos.Propriedades.Count - 1].ToString());
-
             }
             else
             {
@@ -621,7 +611,6 @@ namespace QuaseOrm.Utils
                     s.Append(", ");
                 }
                 s.Append(campos.Propriedades[campos.Propriedades.Count - 1].ToString());
-
             }
             else
             {
@@ -633,7 +622,6 @@ namespace QuaseOrm.Utils
             s.Append(" WHERE (CONVERT (nvarchar(10), ");
             s.Append(campos.DataInicial.Key);
             s.Append(", 103) between @Data1 AND @Data2) ");
-
 
             if (campos.Criterias != null)
             {
@@ -683,7 +671,6 @@ namespace QuaseOrm.Utils
                     s.Append(", ");
                 }
                 s.Append(campos.Propriedades[campos.Propriedades.Count - 1].ToString());
-
             }
             else
             {
@@ -711,7 +698,6 @@ namespace QuaseOrm.Utils
             {
                 s.Append(" WHERE CONTAINS (*, @Campo)");
             }
-
 
             return s.ToString();
         }
@@ -743,8 +729,6 @@ namespace QuaseOrm.Utils
             s.Append(")");
 
             return s.ToString();
-
-
         }
 
         internal static string SelectCount<T>()
@@ -783,8 +767,6 @@ namespace QuaseOrm.Utils
             }
 
             return s.ToString();
-
-
         }
 
         internal static string SelectMax<T>(string coluna)
@@ -793,7 +775,7 @@ namespace QuaseOrm.Utils
 
             StringBuilder s = new StringBuilder();
             s.Append(" SELECT MAX(");
-            s.Append(coluna); 
+            s.Append(coluna);
             s.Append(") FROM ");
             s.Append(tipo.Name);
 

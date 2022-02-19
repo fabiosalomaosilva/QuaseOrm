@@ -1,4 +1,3 @@
-using QuaseOrm;
 using QuaseOrm.DataAnnotations;
 using QuaseOrm.Helpers;
 using QuaseOrm.Utils;
@@ -24,15 +23,15 @@ namespace QuaseOrm.Extensions
                 var chave = Helper.RecuperarChavePrimaria<T>();
                 var obj = new T();
                 var obj1 = new TKey();
-                
+
                 foreach (var i in props)
-                {                    
-                    if (i.Name == chave1)   
+                {
+                    if (i.Name == chave1)
                     {
                         foreach (var item in source)
                         {
                             if (item.ToString() == obj1.ToString())
-                            {                                                           
+                            {
                                 dynamic dados = db.PesquisarID<TKey>(item);
                                 var ddd = "";
                             }
@@ -156,7 +155,6 @@ namespace QuaseOrm.Extensions
             return t;
         }
 
-
         private static List<T> ConvertToList<T>(DataTable dt)
         {
             var columnNames = dt.Columns.Cast<DataColumn>()
@@ -179,9 +177,7 @@ namespace QuaseOrm.Extensions
 
                 return objT;
             }).ToList();
-
         }
-
 
         public static int Count<T>(this T source) where T : class
         {
@@ -233,6 +229,7 @@ namespace QuaseOrm.Extensions
                 throw new Exception(string.Format("{0}\r\n{1}", ex.Message, ex.InnerException));
             }
         }
+
         public static int Min<T>(this List<T> source, string NomeColuna) where T : class
         {
             int min;
@@ -274,11 +271,7 @@ namespace QuaseOrm.Extensions
                 chave = att.Nome;
             }
 
-
             return chave;
         }
-
     }
 }
-
-

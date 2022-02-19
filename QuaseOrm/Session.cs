@@ -200,7 +200,6 @@ namespace QuaseOrm
                             {
                                 var t = i.Value.GetType();
                                 cmd.Parameters.Add(new SqlParameter("@" + i.Key, GenSql.DefinirTipoParametro(i.Value.GetType()))).Value = i.Value;
-
                             }
                         }
                         cmd.CommandType = CommandType.Text;
@@ -247,7 +246,6 @@ namespace QuaseOrm
             }
         }
 
-
         /// <summary>
         /// Listar todos os  Parameters ou determinados  Parameters ('Propriedades' das classes POCO) da tabela do Banco de Dados com Parâmetros de pesquisa ou filtro.
         /// </summary>
@@ -290,7 +288,6 @@ namespace QuaseOrm
                             {
                                 var t = i.Value.GetType();
                                 cmd.Parameters.Add(new SqlParameter("@" + i.Key, GenSql.DefinirTipoParametro(i.Value.GetType()))).Value = i.Value;
-
                             }
                         }
                         cmd.CommandType = CommandType.Text;
@@ -384,7 +381,6 @@ namespace QuaseOrm
                             {
                                 var t = i.Value.GetType();
                                 cmd.Parameters.Add(new SqlParameter("@" + i.Key, GenSql.DefinirTipoParametro(i.Value.GetType()))).Value = i.Value;
-
                             }
                         }
                         cmd.CommandType = CommandType.Text;
@@ -716,7 +712,6 @@ namespace QuaseOrm
                             {
                                 var t = i.Value.GetType();
                                 cmd.Parameters.Add(new SqlParameter("@" + i.Key, GenSql.DefinirTipoParametro(i.Value.GetType()))).Value = i.Value;
-
                             }
                         }
 
@@ -778,9 +773,9 @@ namespace QuaseOrm
             PropertyInfo Key = Helper.RecuperarChavePrimaria<T>();
             Key.SetValue(newObject, Value, null);
 
-             Parameters cam = new Parameters()
+            Parameters cam = new Parameters()
             {
-                 Criteria = new Criteria(Key.Name, Key.GetValue(newObject, null))
+                Criteria = new Criteria(Key.Name, Key.GetValue(newObject, null))
             };
 
             try
@@ -1011,7 +1006,6 @@ namespace QuaseOrm
                 Type tipo = typeof(T);
                 var propriedades = Helper.DefinirPropriedadesBasicasInserir<T>();
 
-
                 foreach (var item in lista)
                 {
                     string SqlCmdString = GenSql.InsertSqlString<T>();
@@ -1040,7 +1034,6 @@ namespace QuaseOrm
                                 {
                                     cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = DBNull.Value;
                                 }
-
                                 else
                                 {
                                     cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = i.GetValue(obj, null);
@@ -1057,7 +1050,6 @@ namespace QuaseOrm
                                     cmd.Parameters.Add(new SqlParameter("@" + i.Name, SqlDbType.NVarChar)).Value = DBNull.Value;
                                 }
                             }
-
                         }
                         cmd.Transaction = transacao;
                         cmd.ExecuteNonQuery();
@@ -1091,14 +1083,13 @@ namespace QuaseOrm
             {
                 Type tipo = typeof(T);
                 var propriedades = Helper.DefinirPropriedadesBasicas<T>();
-                var  Parameters = tipo.GetFields();
+                var Parameters = tipo.GetFields();
                 PropertyInfo Key = Helper.RecuperarChavePrimaria<T>();
                 foreach (var item in lista)
                 {
-
-                     Parameters cam = new Parameters()
+                    Parameters cam = new Parameters()
                     {
-                         Criteria = new Criteria(Key.Name, Key.GetValue(item, null))
+                        Criteria = new Criteria(Key.Name, Key.GetValue(item, null))
                     };
 
                     if (Key == null)
@@ -1117,7 +1108,6 @@ namespace QuaseOrm
                             string SqlCmdString = GenSql.UpdateSqlString<T>(cam);
                             using (SqlCommand cmd = new SqlCommand(SqlCmdString, con))
                             {
-
                                 foreach (var i in propriedades)
                                 {
                                     if (i.PropertyType.FullName.Substring(0, 6) == "System")
@@ -1140,7 +1130,6 @@ namespace QuaseOrm
                                         {
                                             cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = DBNull.Value;
                                         }
-
                                         else
                                         {
                                             cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = i.GetValue(obj, null);
@@ -1157,7 +1146,6 @@ namespace QuaseOrm
                                             cmd.Parameters.Add(new SqlParameter("@" + i.Name, SqlDbType.NVarChar)).Value = DBNull.Value;
                                         }
                                     }
-
                                 }
 
                                 cmd.CommandType = CommandType.Text;
@@ -1169,7 +1157,6 @@ namespace QuaseOrm
                 }
                 transacao.Commit();
                 return lista;
-
             }
             catch (Exception ex)
             {
@@ -1194,12 +1181,12 @@ namespace QuaseOrm
                 {
                     Type tipo = typeof(T);
                     var propriedades = Helper.DefinirPropriedadesBasicas<T>();
-                    var  Parameters = tipo.GetFields();
+                    var Parameters = tipo.GetFields();
                     PropertyInfo Key = Helper.RecuperarChavePrimaria<T>();
 
-                     Parameters cam = new Parameters()
+                    Parameters cam = new Parameters()
                     {
-                         Criteria = new Criteria(Key.Name, Key.GetValue(obj, null))
+                        Criteria = new Criteria(Key.Name, Key.GetValue(obj, null))
                     };
 
                     if (Key == null)
@@ -1242,7 +1229,6 @@ namespace QuaseOrm
                                         {
                                             cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = DBNull.Value;
                                         }
-
                                         else
                                         {
                                             cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = i.GetValue(obj, null);
@@ -1280,7 +1266,7 @@ namespace QuaseOrm
         /// </summary>
         /// <param name="obj">Objeto a ser editado. Key primária (KeyAttribute da classe POCO) deve estar atribuída no ID da Classe POCO.</param>
         /// <param name="propriedades">Define a propriedade ou lista de propriedades a serem alteradas pelo UPDATE.</param>
-        public void Edit<T>(T obj,  Parameters propriedades) where T : new()
+        public void Edit<T>(T obj, Parameters propriedades) where T : new()
         {
             try
             {
@@ -1304,7 +1290,6 @@ namespace QuaseOrm
                     }
                     Hashtable hashtable = new Hashtable();
                     PropertyInfo Key = Helper.RecuperarChavePrimaria<T>();
-
 
                     if (Key == null)
                     {
@@ -1346,7 +1331,6 @@ namespace QuaseOrm
                                         {
                                             cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = DBNull.Value;
                                         }
-
                                         else
                                         {
                                             cmd.Parameters.Add(new SqlParameter("@" + i.Name, dbTipe)).Value = i.GetValue(obj, null);
@@ -1390,14 +1374,13 @@ namespace QuaseOrm
                 {
                     Type tipo = typeof(T);
                     var propriedades = Helper.DefinirPropriedadesBasicas<T>();
-                    var  Parameters = tipo.GetFields();
+                    var Parameters = tipo.GetFields();
                     PropertyInfo Key = Helper.RecuperarChavePrimaria<T>();
 
-                     Parameters cam = new Parameters()
+                    Parameters cam = new Parameters()
                     {
-                         Criteria = new Criteria(Key.Name, Key.GetValue(obj, null))
+                        Criteria = new Criteria(Key.Name, Key.GetValue(obj, null))
                     };
-
 
                     if (Key == null)
                     {
@@ -1446,6 +1429,7 @@ namespace QuaseOrm
                 throw new Exception(string.Format("{0}\r\n{1}", ex.Message, ex.InnerException));
             }
         }
+
         internal int MCount<T>() where T : class
         {
             int contador;
@@ -1459,7 +1443,6 @@ namespace QuaseOrm
                         cmd.CommandType = CommandType.Text;
                         con.Open();
                         contador = Convert.ToInt32(cmd.ExecuteScalar());
-
                     }
                 }
                 return contador;
@@ -1469,6 +1452,7 @@ namespace QuaseOrm
                 throw new Exception(string.Format("{0}\r\n{1}", ex.Message, ex.InnerException));
             }
         }
+
         public int MCount<T>(Parameters parametros) where T : class
         {
             int contador;
@@ -1488,7 +1472,6 @@ namespace QuaseOrm
                         cmd.CommandType = CommandType.Text;
                         con.Open();
                         contador = Convert.ToInt32(cmd.ExecuteScalar());
-
                     }
                 }
                 return contador;
@@ -1498,6 +1481,7 @@ namespace QuaseOrm
                 throw new Exception(string.Format("{0}\r\n{1}", ex.Message, ex.InnerException));
             }
         }
+
         internal int Max<T>(string coluna)
         {
             int max;
@@ -1520,6 +1504,7 @@ namespace QuaseOrm
                 throw new Exception(string.Format("{0}\r\n{1}", ex.Message, ex.InnerException));
             }
         }
+
         internal int Min<T>(string coluna)
         {
             int min;
@@ -1548,17 +1533,18 @@ namespace QuaseOrm
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
             {
             }
         }
+
         ~Session()
         {
             Dispose(false);
         }
-
 
         /**
          *        /// <summary>
@@ -1633,7 +1619,6 @@ namespace QuaseOrm
             }
         }
          **/
-
 
         internal T First<T>(string propriedade, string Value) where T : new()
         {

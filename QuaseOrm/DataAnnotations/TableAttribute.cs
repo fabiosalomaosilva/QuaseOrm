@@ -8,6 +8,7 @@ namespace QuaseOrm.DataAnnotations
         {
             this.Nome = nome;
         }
+
         public string Nome { get; set; }
     }
 }

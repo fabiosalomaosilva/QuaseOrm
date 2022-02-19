@@ -10,7 +10,6 @@ namespace QuaseOrm.Helpers
 {
     public class Helper
     {
-
         internal static PropertyInfo[] DefinirTodasPropriedades<T>() where T : new()
         {
             Type tipo = typeof(T);
@@ -41,9 +40,7 @@ namespace QuaseOrm.Helpers
                             {
                                 props.Add(i);
                             }
-
                         }
-
                     }
                 }
                 else
@@ -80,7 +77,6 @@ namespace QuaseOrm.Helpers
             var propriedades = tipo.GetProperties();
             List<PropertyInfo> props = new List<PropertyInfo>();
             PropertyInfo key = null;
-            
 
             foreach (var i in propriedades)
             {
@@ -99,9 +95,8 @@ namespace QuaseOrm.Helpers
                         {
                             props.Add(i);
                         }
-
                     }
-                }   
+                }
                 else
                 {
                     if (i.PropertyType.BaseType.FullName == "System.Enum")
@@ -135,7 +130,6 @@ namespace QuaseOrm.Helpers
             var propriedades = tipo.GetProperties();
             List<PropertyInfo> props = new List<PropertyInfo>();
 
-
             foreach (var i in propriedades)
             {
                 if (i.PropertyType.FullName.Substring(0, 6) == "System")
@@ -153,7 +147,6 @@ namespace QuaseOrm.Helpers
                     }
                 }
             }
-
 
             PropertyInfo[] array = new PropertyInfo[props.Count];
             int index = 0;
@@ -180,7 +173,6 @@ namespace QuaseOrm.Helpers
             var propriedades = tipo.GetProperties();
             List<PropertyInfo> props = new List<PropertyInfo>();
 
-
             foreach (var i in propriedades)
             {
                 if (i.PropertyType.FullName.Substring(0, 6) == "System")
@@ -192,10 +184,8 @@ namespace QuaseOrm.Helpers
                             props.Add(i);
                         }
                     }
-
                 }
             }
-
 
             PropertyInfo[] array = new PropertyInfo[props.Count];
             int index = 0;
@@ -214,7 +204,7 @@ namespace QuaseOrm.Helpers
             }
 
             return array;
-        }        
+        }
 
         internal static PropertyInfo[] DefinirPropriedadesCustomizadas<T>(Parameters campos)
         {
@@ -247,7 +237,6 @@ namespace QuaseOrm.Helpers
                                             props.Add(i);
                                         }
                                     }
-
                                 }
                             }
                         }
@@ -271,7 +260,6 @@ namespace QuaseOrm.Helpers
                     }
                 }
 
-
                 PropertyInfo[] array = new PropertyInfo[props.Count];
                 int index = 0;
                 foreach (var i in props)
@@ -289,7 +277,6 @@ namespace QuaseOrm.Helpers
                 }
 
                 return array;
-
             }
             else
             {
@@ -302,7 +289,6 @@ namespace QuaseOrm.Helpers
             Type tipo = typeof(T);
             var propriedades = tipo.GetProperties();
             List<PropertyInfo> props = new List<PropertyInfo>();
-
 
             foreach (var i in propriedades)
             {
@@ -382,12 +368,11 @@ namespace QuaseOrm.Helpers
             string key = null;
 
             var campos = prop.GetCustomAttributes(typeof(ForeignKeyAttribute), true);
-                foreach (var i in campos)
-                {
-                    ForeignKeyAttribute att = (ForeignKeyAttribute)i;
-                        key = att.Nome;
-                }
-
+            foreach (var i in campos)
+            {
+                ForeignKeyAttribute att = (ForeignKeyAttribute)i;
+                key = att.Nome;
+            }
 
             return key;
         }
@@ -405,7 +390,6 @@ namespace QuaseOrm.Helpers
                 DatabaseIdentityAttribute att = (DatabaseIdentityAttribute)i;
                 Identidade = att.IsActive;
             }
-
 
             return Identidade;
         }
@@ -457,11 +441,10 @@ namespace QuaseOrm.Helpers
                         nomeClasse = item;
                     }
                 }
-                if (nomeClasse != null)   
+                if (nomeClasse != null)
                 {
                     return nomeClasse.PropertyType;
                 }
-
             }
             else
             {

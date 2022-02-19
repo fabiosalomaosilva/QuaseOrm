@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuaseOrm", "QuaseOrm\QuaseOrm.csproj", "{DCB6BD16-231C-400C-8856-72B262EA7491}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuaseOrmExemple", "QuaseOrmExemple\QuaseOrmExemple.csproj", "{0A6BF604-74ED-4788-B3EF-4B96EEB62DCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCB6BD16-231C-400C-8856-72B262EA7491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB6BD16-231C-400C-8856-72B262EA7491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB6BD16-231C-400C-8856-72B262EA7491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB6BD16-231C-400C-8856-72B262EA7491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6BF604-74ED-4788-B3EF-4B96EEB62DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6BF604-74ED-4788-B3EF-4B96EEB62DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6BF604-74ED-4788-B3EF-4B96EEB62DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6BF604-74ED-4788-B3EF-4B96EEB62DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FA06408-81D3-4B8F-9778-01E336FAC304}
+	EndGlobalSection
+EndGlobal
